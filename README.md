@@ -1,36 +1,140 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 988 Suicide & Crisis Lifeline
+
+A single-page recreation of the 988 Lifeline website with an integrated AI-powered crisis support chatbot built with Next.js, React, Tailwind CSS, and Claude AI.
+
+## Features
+
+- **Responsive Design**: Fully responsive layout that works on all devices
+- **Crisis Resources**: Quick access to call, text, and chat options for 988
+- **Warning Signs**: Educational content about suicide prevention and warning signs
+- **AI Chatbot**: Claude-powered chatbot trained as a suicide prevention specialist
+  - Provides empathetic, 24/7 support
+  - Offers mental health resources
+  - Encourages professional help when appropriate
+  - Non-judgmental and supportive responses
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18.17 or later
+- An Anthropic API key (for the chatbot functionality)
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/MichaelPopeDeveloper/998lifeline-client.git
+cd 998lifeline-client
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Add your Anthropic API key to `.env.local`:
+```
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+```
 
-## Learn More
+5. Run the development server:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+6. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Chatbot Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The integrated chatbot is powered by Claude 3.5 Sonnet and trained to:
+
+- Provide compassionate, non-judgmental support
+- Recognize crisis situations and encourage immediate professional help
+- Share mental health resources including:
+  - 988 Suicide & Crisis Lifeline
+  - Veterans Crisis Line
+  - Crisis Text Line
+  - Trevor Project (LGBTQ+ youth)
+  - Trans Lifeline
+  - SAMHSA National Helpline
+- Help with safety planning and coping strategies
+- Validate feelings while providing hope
+
+## Tech Stack
+
+- **Framework**: Next.js 16
+- **UI**: React 19, Tailwind CSS 4
+- **AI**: Claude 3.5 Sonnet via Anthropic SDK
+- **Language**: TypeScript
+
+## Important Note
+
+This chatbot is designed to provide supportive conversations and resources, but it is **NOT a replacement for professional crisis counseling**. Users experiencing a crisis should:
+
+- **Call or text 988** for the National Suicide Prevention Lifeline
+- **Call 911** if in immediate danger
+- Visit the nearest emergency room
+
+## Project Structure
+
+```
+├── src/
+│   ├── app/
+│   │   ├── api/chat/        # API route for chatbot
+│   │   ├── layout.tsx       # Root layout
+│   │   ├── page.tsx         # Main landing page
+│   │   └── globals.css      # Global styles
+│   └── components/
+│       └── Chatbot.tsx      # Chat UI component
+├── .env.local               # Environment variables (not committed)
+└── package.json
+```
+
+## API Routes
+
+### POST /api/chat
+
+Handles chatbot conversations with Claude AI.
+
+**Request:**
+```json
+{
+  "messages": [
+    { "role": "user", "content": "Hello" },
+    { "role": "assistant", "content": "Hi, how are you?" }
+  ]
+}
+```
+
+**Response:**
+```json
+{
+  "message": "I'm here to support you..."
+}
+```
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy this app is to use the [Vercel Platform](https://vercel.com/new).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Make sure to add your `ANTHROPIC_API_KEY` environment variable in the Vercel project settings.
+
+## License
+
+This project is created for educational and demonstration purposes.
+
+## Resources
+
+- [988 Suicide & Crisis Lifeline](https://988lifeline.org/)
+- [Anthropic Claude Documentation](https://docs.anthropic.com/)
+- [Next.js Documentation](https://nextjs.org/docs)
+
+---
+
+**If you or someone you know is experiencing a mental health crisis, please call or text 988 for immediate support.**
